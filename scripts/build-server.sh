@@ -7,7 +7,7 @@ yarn clean
 yarn build
 
 sha=$(git rev-parse --short HEAD)
-tag="gcr.io/unpkg-server/app:$sha"
+tag="gcr.io/unpkg-server/server:$sha"
 
-docker build -t $tag -f Dockerfile.app .
+docker build -t $tag -f Dockerfile.server .
 docker push $tag
