@@ -3,9 +3,7 @@
   "scripts": {
     "start": "echo 'Use `docker-compose up` to start the server.'",
     "clean": "rm -rf public/_assets server/stats.json",
-    "build-client": "NODE_ENV=production webpack -p --json > server/stats.json",
-    "build-app": "yarn build-client && docker build -t gcr.io/unpkg-server/app:latest -f Dockerfile.app .",
-    "build-logs": "docker build -t gcr.io/unpkg-server/logs:latest -f Dockerfile.logs .",
+    "build": "NODE_ENV=production webpack -p --json > server/stats.json",
     "lint": "eslint client && eslint server",
     "test": "jest"
   },
