@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   const createServer = require("./server/createDevServer");
 
-  server = createDevServer(
+  server = createServer(
     path.resolve(__dirname, "public"),
     require("./webpack.config"),
     config.origin
