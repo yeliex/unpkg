@@ -1,0 +1,42 @@
+version: "3"
+
+networks:
+  localnet: {}
+
+volumes:
+  npmvol: {}
+
+services:
+
+  cache:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
+    networks:
+      - localnet
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    ports:
+      - "5000:5000"
+    volumes:
+      - npmvol:/npm
+    networks:
+      - localnet
+    env_file: .env
+    depends_on:
+      - cache
+
+  logs:
+    build:
+      context: .
+      dockerfile: Dockerfile.logs
+    networks:
+      - localnet
+    env_file: .env
+    depends_on:
+      - cache
