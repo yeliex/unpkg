@@ -17,10 +17,10 @@ services:
     networks:
       - localnet
 
-  app:
+  server:
     build:
       context: .
-      dockerfile: Dockerfile.app
+      dockerfile: Dockerfile.server
     ports:
       - "5000:5000"
     volumes:
@@ -31,10 +31,10 @@ services:
     depends_on:
       - cache
 
-  logs:
+  worker:
     build:
       context: .
-      dockerfile: Dockerfile.logs
+      dockerfile: Dockerfile.worker
     networks:
       - localnet
     env_file: .env

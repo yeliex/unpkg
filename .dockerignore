@@ -4,7 +4,6 @@
 .travis.yml
 data
 deploy
-docs
 node_modules
 private.key
 scripts
